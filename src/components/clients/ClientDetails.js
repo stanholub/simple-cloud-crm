@@ -73,6 +73,12 @@ class ClientDetails extends Component {
 
   onChange = e => this.setState({ [e.target.name]: e.target.value });
 
+  onBalanceChange = e =>  {
+    if (!isNaN(e.target.value)) {
+      this.setState({ [e.target.name]: e.target.value });
+    }    
+  }
+
   render() {
     const { client, notes } = this.props;
     const { showBalanceUpdate, balanceUpdateAmount } = this.state;
@@ -88,7 +94,7 @@ class ClientDetails extends Component {
               name="balanceUpdateAmount"
               placeholder="Add new balance"
               value={balanceUpdateAmount}
-              onChange={this.onChange}
+              onChange={this.onBalanceChange}
             />
             <div className="input-group-append">
               <input
