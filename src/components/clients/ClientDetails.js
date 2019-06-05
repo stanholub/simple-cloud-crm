@@ -11,7 +11,7 @@ import "../layout/style.css";
 class ClientDetails extends Component {
   state = {
     showBalanceUpdate: false,
-    balanceUpdateAmount: "0",
+    balanceUpdateAmount: "0.00",
     topic: "",
     info: ""
   };
@@ -74,7 +74,7 @@ class ClientDetails extends Component {
   onChange = e => this.setState({ [e.target.name]: e.target.value });
 
   onBalanceChange = e =>  {
-    if (!isNaN(e.target.value) && (e.target.value !== '')) {
+    if (!isNaN(e.target.value)) {
       this.setState({ [e.target.name]: e.target.value });
     }    
   }
@@ -95,6 +95,7 @@ class ClientDetails extends Component {
               placeholder="Add new balance"
               minlength="1"
               maxlength="10"
+              required
               value={balanceUpdateAmount}
               onChange={this.onBalanceChange}
             />
