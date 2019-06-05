@@ -11,7 +11,7 @@ import "../layout/style.css";
 class ClientDetails extends Component {
   state = {
     showBalanceUpdate: false,
-    balanceUpdateAmount: "",
+    balanceUpdateAmount: "0",
     topic: "",
     info: ""
   };
@@ -44,11 +44,11 @@ class ClientDetails extends Component {
     e.preventDefault();
 
     const { client, firestore } = this.props;
-    const { balanceUpdateAmount } = this.state;
-
+    const { balanceUpdateAmount } = this.state;    
+    
     const clientUpdate = {
       balance: parseFloat(balanceUpdateAmount)
-    };
+    };   
 
     firestore.update({ collection: "clients", doc: client.id }, clientUpdate);
   };
@@ -74,7 +74,7 @@ class ClientDetails extends Component {
   onChange = e => this.setState({ [e.target.name]: e.target.value });
 
   onBalanceChange = e =>  {
-    if (!isNaN(e.target.value)) {
+    if (!isNaN(e.target.value) && (e.target.value !== '')) {
       this.setState({ [e.target.name]: e.target.value });
     }    
   }
