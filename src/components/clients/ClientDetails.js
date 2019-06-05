@@ -93,6 +93,7 @@ class ClientDetails extends Component {
               className="form-control"
               name="balanceUpdateAmount"
               placeholder="Add new balance"
+              minlength="1"
               maxlength="10"
               value={balanceUpdateAmount}
               onChange={this.onBalanceChange}
